@@ -1,0 +1,11 @@
+test_conflicting_groups_quarantined_and_counts_conserved (test_pipeline.BoundaryTests.test_conflicting_groups_quarantined_and_counts_conserved) ... ok
+test_no_predictions_is_not_perfect_precision (test_pipeline.BoundaryTests.test_no_predictions_is_not_perfect_precision) ... ok
+test_normalization_groups_identity_variants (test_pipeline.BoundaryTests.test_normalization_groups_identity_variants) ... ok
+test_partition_disjoint_and_reproducible (test_pipeline.BoundaryTests.test_partition_disjoint_and_reproducible) ... ok
+test_power_and_confidence_boundaries (test_pipeline.BoundaryTests.test_power_and_confidence_boundaries) ... ok
+test_threshold_constraints_and_missing_class (test_pipeline.BoundaryTests.test_threshold_constraints_and_missing_class) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.009s
+
+OK

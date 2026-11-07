@@ -1,0 +1,121 @@
+{
+  "source": {
+    "url": "https://raw.githubusercontent.com/t-davidson/hate-speech-and-offensive-language/cb50f7e9eb855a99abc51423bf40df0e26d6fe30/data/labeled_data.csv",
+    "sha256": "fcb8bc7c68120ae4af04a5b9acd58585513ede11e1548ebf36a5c2040b6f6281",
+    "original_class_counts": {
+      "2": 4163,
+      "1": 19190,
+      "0": 1430
+    }
+  },
+  "quality": {
+    "raw_rows": 24783,
+    "unique_eligible_rows": 24544,
+    "duplicate_rows_removed": 188,
+    "conflicting_annotation_rows_quarantined": 51
+  },
+  "split_sizes": {
+    "train": 14726,
+    "validation": 4909,
+    "test": 4909
+  },
+  "model": {
+    "type": "TF-IDF word unigram/bigram plus class-weighted logistic regression",
+    "C": 1.0,
+    "vocabulary_size": 24974,
+    "seed": 731,
+    "selection": "validation PR-AUC",
+    "threshold_selection": "maximize validation recall at review rate <=20% and FPR <=5%",
+    "threshold": 0.5700000000000001,
+    "features": [
+      "normalized tweet text only"
+    ],
+    "scores_are_calibrated_probabilities": false
+  },
+  "validation": {
+    "n": 4909,
+    "positive_labels": 283,
+    "flagged": 356,
+    "tp": 127,
+    "fp": 229,
+    "fn": 156,
+    "tn": 4397,
+    "precision": 0.35674157303370785,
+    "recall": 0.44876325088339225,
+    "false_positive_rate": 0.049502810203199306,
+    "review_rate": 0.07251986147891627,
+    "precision_wilson_95": [
+      0.3087522076858829,
+      0.4077896262254069
+    ],
+    "recall_wilson_95": [
+      0.39188744883726845,
+      0.5070114058846773
+    ],
+    "false_positive_rate_wilson_95": [
+      0.04361721845282287,
+      0.056135972434696944
+    ]
+  },
+  "test": {
+    "n": 4909,
+    "positive_labels": 282,
+    "flagged": 360,
+    "tp": 138,
+    "fp": 222,
+    "fn": 144,
+    "tn": 4405,
+    "precision": 0.38333333333333336,
+    "recall": 0.48936170212765956,
+    "false_positive_rate": 0.04797925221525827,
+    "review_rate": 0.07333469138317376,
+    "precision_wilson_95": [
+      0.3345918677764454,
+      0.434538345497583
+    ],
+    "recall_wilson_95": [
+      0.431553998551024,
+      0.547455344513644
+    ],
+    "false_positive_rate_wilson_95": [
+      0.04218724327668841,
+      0.054521197900380694
+    ],
+    "pr_auc": 0.3618802957805591,
+    "roc_auc": 0.8581242230693418,
+    "constant_score_pr_auc": 0.05744550825015278,
+    "pr_auc_lift_over_prevalence": 6.299540326194201
+  },
+  "launch_plan": {
+    "assumed_baseline_harm_rate": 0.01,
+    "absolute_mde": 0.002,
+    "alpha": 0.05,
+    "power": 0.8,
+    "required_users_per_arm": 35001,
+    "observed_experiment": false
+  },
+  "checks": {
+    "raw_row_conservation": true,
+    "partition_row_conservation": true,
+    "train_validation_disjoint": true,
+    "train_test_disjoint": true,
+    "validation_test_disjoint": true,
+    "both_classes_each_partition": true,
+    "sqlite_integrity": true,
+    "sql_test_count_parity": true,
+    "sql_true_positive_parity": true,
+    "sql_false_positive_parity": true,
+    "validation_review_constraint": true,
+    "validation_fpr_constraint": true
+  },
+  "checks_passed": 12,
+  "limits": [
+    "Offline historical annotations; no production reduction or launch effect measured.",
+    "No author, exposure, geography, age, appeals, or reliable timestamp fields.",
+    "Duplicate text excluded across splits; author independence cannot be verified.",
+    "Lexicon-enriched English source is not representative of platform prevalence.",
+    "Slice checks are descriptive and are not demographic fairness validation.",
+    "Row-based Wilson intervals do not account for unknown author clustering.",
+    "Validation constraints are not guarantees on the frozen test or future data."
+  ]
+}
