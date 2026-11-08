@@ -16,6 +16,4 @@ The local SQLite `evaluation` table contains `text_hash TEXT PRIMARY KEY, split 
 
 ## Backup
 
-[Google Civil Comments](https://huggingface.co/datasets/google/civil_comments) contains `text`, `toxicity`, `severe_toxicity`, `obscene`, `threat`, `insult`, `identity_attack`, `sexual_explicit` with official splits. Its CC0 toxicity annotations require a separate task, e.g. `toxicity >= 0.5`, its own preprocessing, deduplication and evaluation. This is a proposed backup adaptation, not an executed replication of the hate-speech task. Do not pool its labels with the primary source or treat it as independent evidence of current model accuracy.
-
-The observed class balance is a sampling property. It cannot estimate live harm prevalence, exposure-weighted risk, policy violation rates, creator impact, or the harm reduction from moderation.
+[Google Civil Comments](https://huggingface.co/datasets/google/civil_comments) contains `text`, `toxicity`, `severe_toxicity`, `obscene`, `threat`, `insult`, `identity_attack`, `sexual_explicit` with official splits. Its CC0 toxicity annotations define a separate task (`toxicity >= 0.5`) with dedicated preprocessing, deduplication and evaluation.

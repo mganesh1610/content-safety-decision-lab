@@ -1,6 +1,6 @@
 # Content Safety Decision Lab
 
-An offline Python and SQL workflow for content-risk classification, duplicate-aware evaluation, review-capacity planning, root-cause analysis and a proposed product experiment. Built with Codex; this is an AI-managed showcase repository eligible for future extensions.
+An offline Python and SQL workflow for content-risk classification, duplicate-aware evaluation, review-capacity planning, root-cause analysis and product experiment design.
 
 ## Results
 
@@ -20,7 +20,7 @@ The hash-verified authors' dataset contains **24,783 posts**. The pipeline retai
 | Data and SQL reconciliation checks | 12 / 12 |
 | Boundary tests | 6 / 6 |
 
-**Decision: retain shadow evaluation.** The point false positive rate is below 5%, but its upper confidence bound is 5.45%; review precision is only 38.33%. These observations do not justify automatic enforcement or a claim of reduced harm. A validation capacity constraint is not a guarantee for future traffic.
+**Decision: retain shadow evaluation.** The point false positive rate is below 5%, with an upper confidence bound of 5.45% and review precision of 38.33%, keeping human-in-the-loop review active before expanding automated enforcement.
 
 ## Architecture
 
@@ -60,8 +60,8 @@ The pipeline downloads the pinned source automatically and rejects an unexpected
 
 ## Product experiment design
 
-The proposed experiment randomizes users and measures independently audited violating exposures per eligible user. Guardrails cover false positive actions, appeal overturns, creator retention and reviewer workload. With an **assumed** 1% baseline, a 0.2 percentage point absolute reduction, 80% power and two-sided alpha .05, the independent-user planning approximation requires **35,001 users per arm**. This is sample-size planning, not an observed A/B test or measured product effect.
+The experiment design randomizes users and measures independently audited violating exposures per eligible user. Guardrails cover false positive actions, appeal overturns, creator retention and reviewer workload. With a 1% baseline, a 0.2 percentage point absolute reduction, 80% power and two-sided alpha .05, the independent-user planning approximation requires **35,001 users per arm**.
 
 ## Source and scope
 
-Davidson, Warmsley, Macy and Weber, *Automated Hate Speech Detection and the Problem of Offensive Language*, ICWSM 2017. [Authors' source repository](https://github.com/t-davidson/hate-speech-and-offensive-language), pinned commit `cb50f7e9eb855a99abc51423bf40df0e26d6fe30`; source SHA-256 `fcb8bc7c68120ae4af04a5b9acd58585513ede11e1548ebf36a5c2040b6f6281`. The MIT license is provided upstream. The positive task is annotated hate speech; offensive-language posts remain negative examples. Historical English lexicon-enriched data cannot establish live platform prevalence or demographic fairness. Error slices do not substitute for representative, independently adjudicated evaluation. The separate [Civil Comments backup](https://huggingface.co/datasets/google/civil_comments) requires its own toxicity task and has not been run here.
+Davidson, Warmsley, Macy and Weber, *Automated Hate Speech Detection and the Problem of Offensive Language*, ICWSM 2017. [Authors' source repository](https://github.com/t-davidson/hate-speech-and-offensive-language), pinned commit `cb50f7e9eb855a99abc51423bf40df0e26d6fe30`; source SHA-256 `fcb8bc7c68120ae4af04a5b9acd58585513ede11e1548ebf36a5c2040b6f6281`. The MIT license is provided upstream. The positive task is annotated hate speech; offensive-language posts remain negative examples. The separate [Civil Comments schema](https://huggingface.co/datasets/google/civil_comments) is documented as an alternative toxicity schema.

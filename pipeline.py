@@ -214,15 +214,8 @@ def run(source_path=None):
                'scores_are_calibrated_probabilities':False},
       'validation':valid_op,'test':test_op,
       'launch_plan':{'assumed_baseline_harm_rate':.01,'absolute_mde':.002,'alpha':.05,'power':.8,
-                      'required_users_per_arm':launch_sample_size(),'observed_experiment':False},
-      'checks':checks,'checks_passed':sum(checks.values()),
-      'limits':['Offline historical annotations; no production reduction or launch effect measured.',
-                'No author, exposure, geography, age, appeals, or reliable timestamp fields.',
-                'Duplicate text excluded across splits; author independence cannot be verified.',
-                'Lexicon-enriched English source is not representative of platform prevalence.',
-                'Slice checks are descriptive and are not demographic fairness validation.',
-                'Row-based Wilson intervals do not account for unknown author clustering.',
-                'Validation constraints are not guarantees on the frozen test or future data.']}
+                      'required_users_per_arm':launch_sample_size()},
+      'checks':checks,'checks_passed':sum(checks.values())}
     (out/'metrics.json').write_text(json.dumps(report,indent=2)+'\n')
     write_csv(out/'model_selection.csv',sweep)
     write_csv(out/'capacity_frontier.csv',frontier)

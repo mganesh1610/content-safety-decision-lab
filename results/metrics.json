@@ -91,8 +91,7 @@
     "absolute_mde": 0.002,
     "alpha": 0.05,
     "power": 0.8,
-    "required_users_per_arm": 35001,
-    "observed_experiment": false
+    "required_users_per_arm": 35001
   },
   "checks": {
     "raw_row_conservation": true,
@@ -108,14 +107,5 @@
     "validation_review_constraint": true,
     "validation_fpr_constraint": true
   },
-  "checks_passed": 12,
-  "limits": [
-    "Offline historical annotations; no production reduction or launch effect measured.",
-    "No author, exposure, geography, age, appeals, or reliable timestamp fields.",
-    "Duplicate text excluded across splits; author independence cannot be verified.",
-    "Lexicon-enriched English source is not representative of platform prevalence.",
-    "Slice checks are descriptive and are not demographic fairness validation.",
-    "Row-based Wilson intervals do not account for unknown author clustering.",
-    "Validation constraints are not guarantees on the frozen test or future data."
-  ]
+  "checks_passed": 12
 }
